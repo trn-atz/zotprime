@@ -180,7 +180,7 @@ class Zend_Service_WindowsAzure_CommandLine_Package
 		if ($runDevFabric) {
 			passthru($csrun . ' /devstore:start /devfabric:start');
 			passthru($csrun . ' /removeAll');
-			passthru($csrun . ' /run:"' . $packageOut . ';' . $serviceConfigurationFileOut . '" /launchBrowser');
+		passthru($csrun . ' /run:"' . escapeshellarg($packageOut) . ';' . escapeshellarg($serviceConfigurationFileOut) . '" /launchBrowser');
 		}
 	}
 
