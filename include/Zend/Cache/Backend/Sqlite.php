@@ -113,6 +113,7 @@ class Zend_Cache_Backend_Sqlite extends Zend_Cache_Backend implements Zend_Cache
     public function load($id, $doNotTestCacheValidity = false)
     {
         $this->_checkAndBuildStructure();
+        $id = @sqlite_escape_string($id);
         $sql = "SELECT content FROM cache WHERE id='$id'";
         if (!$doNotTestCacheValidity) {
             $sql = $sql . " AND (expire=0 OR expire>" . time() . ')';
